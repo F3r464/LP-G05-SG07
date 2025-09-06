@@ -1,0 +1,24 @@
+public class SMSnotification{
+    public void mostrarSMS(String mensaje){
+        System.out.println("mensaje SMS"+mensaje);
+    }
+}
+public class EmailNotification{
+    public void mostrarEmail(String mensaje){
+        System.out.println("mensaje email"+mensaje);
+    }
+}
+public class Notificador {
+    private EmailNotificacion emailmensaje;
+    private SMSNotificssmsmensaje;
+
+    public Notificador(EmailNotificacion emailmensaje, SMSNotificacion smsmensaje){
+        this.emailmensaje = emailmensaje;
+        this.smsmensaje = smsmensaje;
+    }
+}
+public class Mensajes{
+    public static void main(String[]args){
+        
+    }
+}
