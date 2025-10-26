@@ -1,0 +1,65 @@
+public void eliminarTodo(){
+    lista.clear();
+}
+
+public void eliminarRegistro(int id){
+    for(Artista a:lista){
+        if(a.id==id){
+            lista.set(a,null);
+        }
+    }
+}
+
+public void edit(int id, String nombre, String apellido, String técnica, String telefono, String país){
+    for(Artista a:lista){
+        a.nombre=nombre;
+        a.apellido=apellido;
+        a.tecnica=técnica;
+        a.telefono=teléfono;
+        a.pais=país;
+    }
+}
+
+public void eliminarCustom(String campo, String valor){
+    for(int i=0;i<lista.size();i++){
+        Artista a=lista.get(i);
+        if(campo.equals("nombre")&& a.nombre.equals(valor)){
+            lista.remove(i--);
+        }
+        if(campo.equals("apellido")&& a.apellido.equals(valor)){
+            lista.remove(i--);
+        }
+        if(campo.equals("tecnica")&& a.tecnica.equals(valor)){
+            lista.remove(i--);
+        }
+        if(campo.equals("pais")&& a.pais.equals(valor)){
+            lista.remove(i--);
+        }
+        if(campo.equals("telefono")&& a.telefono.equals(valor)){
+            lista.remove(i--);
+        }
+    }
+}
+
+public void editCustom(String campo, String valor){
+    for(int i=0;i<lista.size();i++){
+        Artista a=lista.get(i);
+        for(Artista s:lista){
+            if(campo.equals("nombre")&& a.nombre.equals(valor)){
+                s.nombre=sc.nextLine();
+            }
+            if(campo.equals("apellido")&& a.apellido.equals(valor)){
+                s.apellido=sc.nextLine();
+            }
+            if(campo.equals("tecnica")&& a.tecnica.equals(valor)){
+                s.tecnica=sc.nextLine();
+            }
+            if(campo.equals("pais")&& a.pais.equals(valor)){
+                s.pais=sc.nextLine();
+            }
+            if(campo.equals("telefono")&& a.telefono.equals(valor)){
+                s.telefono=sc.nextLine();
+            }
+        }
+    }
+}
