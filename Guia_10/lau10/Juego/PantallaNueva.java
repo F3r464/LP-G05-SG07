@@ -1,15 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+
 public class PantallaNueva extends JPanel {
+
     private JFrame ventana;
     private Image fondo;
     private DBManager db;
     private JTextField campoNombre;
     private JComboBox<String> comboEscenario;
-    public PantallaNueva(JFrame ventana){
+
+    public PantallaNueva(JFrame ventana) {
         this.ventana = ventana;
         setLayout(null);
+
         fondo = new ImageIcon("assets/fondo_juego.png").getImage();
         db = new DBManager();
 
@@ -24,25 +28,26 @@ public class PantallaNueva extends JPanel {
         titulo.setBounds(250, 40, 500, 100);
         add(titulo);
     }
+
     private void colocarFormulario() {
-        JLabel txtNombre = new JLabel(new ImageIcon(
-                TextoImagen.crearTexto("Nombre del jugador:", 30)
-        ));
+
+        JLabel txtNombre = new JLabel(new ImageIcon("assets/txt_nombre.png"));
         txtNombre.setBounds(260, 180, 400, 40);
         add(txtNombre);
+
         campoNombre = new JTextField();
         campoNombre.setBounds(260, 230, 400, 35);
         campoNombre.setFont(new Font("Arial", Font.PLAIN, 20));
         add(campoNombre);
-        JLabel txtEscenario = new JLabel(new ImageIcon(
-                TextoImagen.crearTexto("Escenario:", 30)
-        ));
+
+        JLabel txtEscenario = new JLabel(new ImageIcon("assets/txt_escenario.png"));
         txtEscenario.setBounds(260, 300, 400, 40);
         add(txtEscenario);
+
         comboEscenario = new JComboBox<String>();
-        comboEscenario.addItem("opc1");
-        comboEscenario.addItem("opc2");
-        comboEscenario.addItem("opc3");
+        comboEscenario.addItem("Bosque");
+        comboEscenario.addItem("Desierto");
+        comboEscenario.addItem("Nieve");
         comboEscenario.setBounds(260, 350, 250, 35);
         add(comboEscenario);
     }
@@ -52,9 +57,11 @@ public class PantallaNueva extends JPanel {
         crear.setRolloverIcon(new ImageIcon("assets/boton_crear_hover.png"));
         crear.setBorderPainted(false);
         crear.setContentAreaFilled(false);
+        crear.setFocusPainted(false);
         crear.setBounds(330, 450, 200, 60);
-        crear.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+
+        crear.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 crearPartida();
             }
         });
@@ -62,14 +69,16 @@ public class PantallaNueva extends JPanel {
         add(crear);
     }
 
-    private void colocarBotonVolver(){
+    private void colocarBotonVolver() {
         JButton volver = new JButton(new ImageIcon("assets/boton_regresar.png"));
         volver.setRolloverIcon(new ImageIcon("assets/boton_regresar_hover.png"));
         volver.setBorderPainted(false);
         volver.setContentAreaFilled(false);
+        volver.setFocusPainted(false);
         volver.setBounds(20, 20, 150, 60);
-        volver.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
+
+        volver.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
                 ventana.setContentPane(new PantallaInicio(ventana));
                 ventana.revalidate();
             }
@@ -79,20 +88,23 @@ public class PantallaNueva extends JPanel {
     }
 
     private void crearPartida() {
-        String nombre=campoNombre.getText();
-        String escenario=comboEscenario.getSelectedItem().toString();
+        String nombre = campoNombre.getText();
+        String escenario = comboEscenario.getSelectedItem().toString();
 
-        if (nombre.trim().equals("")){
+        if (nombre.trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Escribe un nombre.");
             return;
         }
+
         int slotLibre = buscarPrimerSlot();
 
-        if(slotLibre==-1){
-            JOptionPane.showMessageDialog(this, "Todos los slots están llenos.","alerta",  JOptionPane.INFORMATION_MESSAGE);
+        if (slotLibre == -1) {
+            JOptionPane.showMessageDialog(this, "Todos los slots están llenos.");
             return;
         }
+
         db.guardarPartida(slotLibre, nombre, "0:00", escenario);
+
         ventana.setContentPane(new PantallaPrincipal(ventana));
         ventana.revalidate();
     }
@@ -105,6 +117,7 @@ public class PantallaNueva extends JPanel {
         }
         return -1;
     }
+
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(fondo, 0, 0, getWidth(), getHeight(), this);
