@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 public class SlotPartida extends JButton {
     public SlotPartida(Partida p) {
         setLayout(null);
@@ -24,14 +25,20 @@ public class SlotPartida extends JButton {
 
             JLabel txtNombre = new JLabel(p.getNombre());
             txtNombre.setBounds(140, 20, 300, 40);
+            txtNombre.setForeground(Color.WHITE);
+            txtNombre.setFont(new Font("Arial", Font.BOLD, 20));
             add(txtNombre);
 
             JLabel txtTiempo = new JLabel(p.getTiempo());
             txtTiempo.setBounds(140, 65, 150, 40);
+            txtTiempo.setForeground(Color.WHITE);
+            txtTiempo.setFont(new Font("Arial", Font.BOLD, 20));
             add(txtTiempo);
 
             JLabel txtEscenario = new JLabel(p.getEscenario());
             txtEscenario.setBounds(370, 65, 150, 40);
+            txtEscenario.setForeground(Color.WHITE);
+            txtEscenario.setFont(new Font("Arial", Font.BOLD, 20));
             add(txtEscenario);
         }else{
             JLabel vacio = new JLabel(new ImageIcon("assets/slot_vacio.png"));
