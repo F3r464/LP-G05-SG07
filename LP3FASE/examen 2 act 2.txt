@@ -1,0 +1,21 @@
+import java.util.*;
+public class SensorMovimiento{
+    private List<Observador>observador=new ArrayList<>();
+    private int estado;
+    public void agregarObservador(Observador o){
+        observador.add(o);
+    }
+    public void setEstado(int e){
+        estado=e;
+        notificar();
+    }
+    public void notificar(){
+        for(Observador o:observador){
+            o.actualizar(estado);
+        }
+    }
+}
+interface Observador{
+    void actualizar(int e);
+}
+

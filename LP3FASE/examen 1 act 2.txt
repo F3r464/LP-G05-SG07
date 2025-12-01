@@ -1,0 +1,20 @@
+import java.util.*;
+public class SujetoTemperatura{
+    private List<Observer>observador=new ArrayList<>();
+    private int temperatura;
+    public void addObserver(Observer o){
+        observador.add(o);
+    }
+    public void setTemperatura(int t){
+        temperatura=t;
+        notifyObservers();
+    }
+    public void notifyObservers(){
+        for(Observer o:observador){
+            o.update(temperatura);
+        }
+    }
+}
+
+
+

@@ -1,0 +1,15 @@
+import javax.swing.*;
+import java.awt.*;
+public class BLayout{
+    public static void main(String[]args){
+        JFrame f=new JFrame("BorderLayout");
+        f.setSize(300,300);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setLayout(new BorderLayout());
+        JButton b=new JButton("Btn");
+        JLabel c=new JLabel("Área central",SwingConstants.CENTER);
+        f.add(b,BorderLayout.NORTH);
+        f.add(c,BorderLayout.CENTER);
+        f.setVisible(true);
+    }
+}

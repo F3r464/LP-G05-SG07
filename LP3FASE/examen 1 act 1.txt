@@ -1,0 +1,25 @@
+import javax.swing.*;
+public class Examen1{
+    public static void main(String[]args){
+        JFrame f=new JFrame("Examen 1");
+        f.setSize(400,300);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setVisible(true);
+    }
+}
+
+copia el de arriba  ^^^^^ lo de abajo esta bien pero va a ser para que te explique
+
+import javax.swing.*;
+public class Examen1 extends JFrame{
+    public Examen1(){
+        super("Examen 1");
+        setSize(400,300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+    public static void main(String[]args){
+        new Examen1();
+    }
+}
+

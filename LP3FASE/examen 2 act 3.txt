@@ -1,0 +1,17 @@
+public interface Operacion{
+    int calcular(int a,int b);
+}
+public class Multiplicacion implements Operacion{
+    public int calcular(int a,int b){
+        return a*b;
+    }
+}
+public class Division implements Operacion{
+    public int calcular(int a,int b){
+        if(b==0){
+            return 0;
+        }else{
+            return a/b;
+        }
+    }
+}

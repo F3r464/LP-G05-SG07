@@ -1,0 +1,25 @@
+import javax.swing.*;
+import java.awt.event.*;
+public interface Comando{
+    void ejecutar();
+}
+class Boton{
+    public static void main(String[]args){
+        JFrame f=new JFrame("exe");
+        f.setSize(250,250);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JButton b=new JButton("Ejecutar acción");
+        f.add(b);
+        f.setVisible(true);
+        Comando c=new Comando(){
+            public void ejecutar(){
+                System.out.println("Comando ejecutado correctamente");
+            }
+        };
+        b.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                c.ejecutar();
+            }
+        });
+    }
+}

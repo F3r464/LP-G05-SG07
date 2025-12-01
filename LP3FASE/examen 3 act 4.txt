@@ -1,0 +1,27 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.time.LocalTime;
+public interface Comando{
+    void ejecutar();
+}
+class MostrarHora implements Comando{
+    public void ejecutar(){
+        System.out.println(LocalTime.now());
+    }
+}
+class BtnHora{
+    public static void main(String[]args){
+        JFrame f=new JFrame("verhora");
+        f.setSize(250,250);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JButton b=new JButton("Mostrar hora");
+        f.add(b);
+        f.setVisible(true);
+        Comando comando=new MostrarHora();
+        b.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                comando.ejecutar();
+            }
+        });
+    }
+}

@@ -1,0 +1,17 @@
+import javax.swing.*;
+import java.awt.event.*;
+public class Saludo{
+    public static void main(String[]args){
+        JFrame f=new JFrame("hola");
+        f.setSize(300,200);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JButton b=new JButton("Saludar");
+        f.add(b);
+        f.setVisible(true);
+        b.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Hola desde Swing");
+            }
+        });
+    }
+}

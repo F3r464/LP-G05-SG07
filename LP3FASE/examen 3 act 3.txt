@@ -1,0 +1,13 @@
+public interface FormatoTexto{
+    String aplicar(String t);
+}
+public class Mayus implements FormatoTexto{
+    public String aplicar(String t){
+        return t.toUpperCase();
+    }
+}
+public class Minus implements FormatoTexto{
+    public String aplicar(String t){
+        return t.toLowerCase();
+    }
+}

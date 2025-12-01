@@ -1,0 +1,20 @@
+import java.util.*;
+public class ContadorClicks{
+    private int clicks=0;
+    private List<Observador>observador=new ArrayList<>();
+    public void agregarObservador(Observador o){
+        observador.add(o);
+    }
+    public void incrementar(){
+        clicks++;
+        notificar();
+    }
+    public void notificar(){
+        for(Observador o:observador){
+            o.actualizar(clicks);
+        }
+    }
+}
+interface Observador{
+    void actualizar(int v);
+}

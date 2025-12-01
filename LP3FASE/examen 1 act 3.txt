@@ -1,0 +1,13 @@
+public interface Operacion{
+    int calcular(int a,int b);
+}
+public class Suma implements Operacion{
+    public int calcular(int a,int b){
+        return a+b;
+    }
+}
+public class Resta implements Operacion{
+    public int calcular(int a,int b){
+        return a-b;
+    }
+}
